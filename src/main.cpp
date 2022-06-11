@@ -1,24 +1,9 @@
+#include <main.h>
 #include <Arduino.h>
 #include <iostream>
 #include <unistd.h>
+
 using namespace std;
-
-// main functions
-void setup();
-void logMessage(string prefix, string message);
-
-//state functions
-void onIdle();
-void onStart();
-void onFlying();
-void onFallingDown();
-void onLanded();
-
-// data handling
-void insertDataQueue(string message);
-void emptyDataQueue();
-
-// utility
 
 // constants
 const string STATE_IDLE_MESSAGE = "Raketenstatus -> Idle";
@@ -46,7 +31,6 @@ void logMessage(string prefix, string message){
 }
 
 // describes the rocket state and handles switching between states
-// also fires callbacks and logs all actions
 class rocketState {
     public:
         void setState(procedureState newState){
